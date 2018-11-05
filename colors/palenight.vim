@@ -38,9 +38,6 @@ function! s:h(group, style)
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
-    if has_key(a:style, "gui") && a:style["gui"] == "italic"
-      unlet a:style.gui
-    endif
   endif
   if g:palenight_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
@@ -131,7 +128,7 @@ call s:h("Debug", {}) " debugging statements
 call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
 call s:h("Ignore", {}) " left blank, hidden
 call s:h("Error", { "fg": s:red }) " any erroneous construct
-call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+call s:h("Todo", { "fg": s:purple, "bg": s:yellow }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 " }}}
 
@@ -156,7 +153,7 @@ call s:h("SignColumn", {}) " column where signs are displayed
 call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
 call s:h("LineNr", { "fg": s:gutter_fg_grey }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 call s:h("CursorLineNr", {}) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-call s:h("MatchParen", { "fg": s:blue, "gui": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
+call s:h("MatchParen", { "fg": s:black, "bg": s:blue, "gui": "bold" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -167,6 +164,7 @@ call s:h("PmenuSbar", { "bg": s:special_grey }) " Popup menu: scrollbar.
 call s:h("PmenuThumb", { "bg": s:white }) " Popup menu: Thumb of the scrollbar.
 call s:h("Question", { "fg": s:purple }) " hit-enter prompt and yes/no questions
 call s:h("Search", { "fg": s:black, "bg": s:yellow }) " Last search pattern highlighting (see 'hlsearch'). Also used for highlighting the current line in the quickfix window and similar items that need to stand out.
+call s:h("SearchCurrent", { "fg": s:black, "bg": s:red }) " Last search pattern highlighting (see 'hlsearch'). Also used for highlighting the current line in the quickfix window and similar items that need to stand out.
 call s:h("SpecialKey", { "fg": s:special_grey }) " Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 call s:h("SpellBad", { "fg": s:red, "gui": "underline", "cterm": "underline" }) " Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a capital. This will be combined with the highlighting used otherwise.
@@ -245,9 +243,9 @@ call s:h("javaScriptReserved", { "fg": s:purple })
 " https://github.com/pangloss/vim-javascript
 call s:h("jsArrowFunction", { "fg": s:purple })
 call s:h("jsClassKeyword", { "fg": s:purple })
-call s:h("jsClassDefinition", { "fg": s:yellow })
+call s:h("jsClassDefinition", { "fg": s:yellow, "gui": "bold"})
 call s:h("jsClassMethodType", { "fg": s:purple })
-call s:h("jsClassFuncName", { "fg": s:blue })
+call s:h("jsClassFuncName", { "fg": s:blue, "gui": "bold"})
 call s:h("jsDestructuringBlock", { "fg": s:blue })
 call s:h("jsDocParam", { "fg": s:blue })
 call s:h("jsDocTags", { "fg": s:purple })
@@ -257,7 +255,7 @@ call s:h("jsExtendsKeyword", { "fg": s:purple })
 call s:h("jsConditional", { "fg": s:purple })
 call s:h("jsOperator", { "fg": s:purple })
 call s:h("jsFrom", { "fg": s:purple })
-call s:h("jsFuncArgs", { "fg": s:blue })
+call s:h("jsFuncArgs", { "fg": s:blue, "gui": "italic" })
 call s:h("jsFuncCall", { "fg": s:blue })
 call s:h("jsFuncName", { "fg": s:blue })
 call s:h("jsObjectProp", { "fg": s:cyan })
@@ -276,6 +274,11 @@ call s:h("jsTemplateBraces", { "fg": s:dark_red })
 call s:h("jsTemplateVar", { "fg": s:green })
 call s:h("jsThis", { "fg": s:red })
 call s:h("jsUndefined", { "fg": s:dark_yellow })
+call s:h("jsNaN", { "fg": s:dark_yellow })
+call s:h("jsReturn", { "fg": s:dark_yellow, "gui": "bold" })
+call s:h("jsBooleanTrue", { "fg": s:dark_yellow, })
+call s:h("jsBooleanFalse", { "fg": s:dark_yellow })
+call s:h("jsObjectKey", { "fg": s:white, "gui": "italic" })
 " call s:h("jsVariableDef", { "fg": s:blue })
 " https://github.com/othree/yajs.vim
 call s:h("javascriptArrowFunc", { "fg": s:purple })
@@ -451,6 +454,20 @@ call s:h("NeomakeInfoSign", { "fg": s:blue })
 " tpope/vim-fugitive
 call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
+
+" NerdTree
+call s:h("NERDTreeFile", { "fg": s:white})
+call s:h("NERDTreeDir", { "fg": s:blue })
+call s:h("NERDTreeDirSlash", { "fg": s:blue })
+" Links
+call s:h("NERDTreeUp", { "fg": s:dark_yellow })
+call s:h("NERDTreeCWD", { "fg": s:dark_yellow, "gui": "bold" })
+call s:h("NERDTreeLinkFile", { "fg": s:dark_yellow })
+" call s:h("NERDTreeLinkDir", { "fg": "brown", "bold" })
+call s:h("NERDTreeLinkTarget", { "fg": s:dark_yellow, "gui": "italic" })
+" call s:h("NERDTreeUp", { "fg": "brown" })
+
+call s:h("NERDTreeExecFile", { "fg": s:red })
 
 " }}}
 
