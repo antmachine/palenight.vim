@@ -503,7 +503,7 @@ if has("nvim")
   let g:terminal_color_0 =  s:black.gui
   let g:terminal_color_1 =  s:red.gui
   let g:terminal_color_2 =  s:green.gui
-  let g:terminal_color_3 =  s:yellow.gui
+  " let g:terminal_color_3 =  s:yellow.gui
   let g:terminal_color_4 =  s:blue.gui
   let g:terminal_color_5 =  s:purple.gui
   let g:terminal_color_6 =  s:cyan.gui
