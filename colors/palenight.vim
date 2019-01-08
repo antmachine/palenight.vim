@@ -38,6 +38,9 @@ function! s:h(group, style)
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
+    if has_key(a:style, "gui") && a:style["gui"] == "italic"	
+      unlet a:style.gui	
+    endif
   endif
   if g:palenight_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
