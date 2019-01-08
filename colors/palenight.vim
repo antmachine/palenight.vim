@@ -456,18 +456,18 @@ call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
 
 " NerdTree
-call s:h("NERDTreeFile", { "fg": s:white})
-call s:h("NERDTreeDir", { "fg": s:blue })
-call s:h("NERDTreeDirSlash", { "fg": s:blue })
+" call s:h("NERDTreeFile", { "fg": s:white})
+" call s:h("NERDTreeDir", { "fg": s:blue })
+" call s:h("NERDTreeDirSlash", { "fg": s:blue })
 " Links
-call s:h("NERDTreeUp", { "fg": s:dark_yellow })
-call s:h("NERDTreeCWD", { "fg": s:dark_yellow, "gui": "bold" })
-call s:h("NERDTreeLinkFile", { "fg": s:dark_yellow })
+" call s:h("NERDTreeUp", { "fg": s:dark_yellow })
+" call s:h("NERDTreeCWD", { "fg": s:dark_yellow, "gui": "bold" })
+" call s:h("NERDTreeLinkFile", { "fg": s:dark_yellow })
 " call s:h("NERDTreeLinkDir", { "fg": "brown", "bold" })
-call s:h("NERDTreeLinkTarget", { "fg": s:dark_yellow, "gui": "italic" })
+" call s:h("NERDTreeLinkTarget", { "fg": s:dark_yellow, "gui": "italic" })
 " call s:h("NERDTreeUp", { "fg": "brown" })
 
-call s:h("NERDTreeExecFile", { "fg": s:red })
+" call s:h("NERDTreeExecFile", { "fg": s:red })
 
 " }}}
 
