@@ -511,7 +511,7 @@ if has("nvim")
   let g:terminal_color_8 =  s:visual_grey.gui
   let g:terminal_color_9 =  s:dark_red.gui
   let g:terminal_color_10 = s:green.gui " No dark version
-  let g:terminal_color_11 = s:dark_yellow.gui
+  " let g:terminal_color_11 = s:dark_yellow.gui
   let g:terminal_color_12 = s:blue.gui " No dark version
   let g:terminal_color_13 = s:purple.gui " No dark version
   let g:terminal_color_14 = s:cyan.gui " No dark version
